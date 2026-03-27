@@ -1,0 +1,24 @@
+{
+  "_comment": "DOOM Inc — SLA Tier 1 Breach Alert workflow spec. Requires HubSpot Sales Hub Professional or higher to deploy via API or UI. On free tier, document as design artifact.",
+  "name": "DOOM Inc — SLA Tier 1 Breach Alert",
+  "type": "CONTACT_BASED",
+  "trigger": {
+    "type": "CONTACT_PROPERTY",
+    "property": "sla_tier",
+    "operator": "EQ",
+    "value": "Tier 1 (respond in 1hr)"
+  },
+  "enrollment": {
+    "re_enrollment": true,
+    "trigger_on_create": true
+  },
+  "actions": [
+    {
+      "type": "CREATE_TASK",
+      "subject": "SLA BREACH — Tier 1 Lead Uncontacted",
+      "body": "Tier 1 contact uncontacted. Respond within 1 hour.",
+      "priority": "HIGH",
+      "due_date_offset_days": 1
+    }
+  ]
+}

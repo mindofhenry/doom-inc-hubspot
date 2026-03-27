@@ -1,0 +1,24 @@
+{
+  "_comment": "DOOM Inc — Post-Conversion Follow-Up workflow spec. Requires HubSpot Sales Hub Professional or higher to deploy via API or UI.",
+  "name": "DOOM Inc — Post-Conversion Follow-Up",
+  "type": "CONTACT_BASED",
+  "trigger": {
+    "type": "CONTACT_PROPERTY",
+    "property": "lifecyclestage",
+    "operator": "EQ",
+    "value": "customer"
+  },
+  "enrollment": {
+    "re_enrollment": false,
+    "trigger_on_update": true
+  },
+  "actions": [
+    {
+      "type": "CREATE_TASK",
+      "subject": "Post-Conversion Follow-Up — Schedule Discovery Call",
+      "body": "Contact converted. Schedule discovery call within 3 days.",
+      "priority": "HIGH",
+      "due_date_offset_days": 3
+    }
+  ]
+}
