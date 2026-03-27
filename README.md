@@ -51,6 +51,10 @@ Segment breakdown:
 
 Created via `scripts/create_companies.py`. One Company record per account, with domain, industry, headcount, ARR, city, and state — giving contacts a proper parent object rather than a flat text field.
 
+### Associations (38)
+
+Created via `scripts/create_associations.py`. The script fetches live IDs for all contacts, companies, and deals, then wires them together using HubSpot's Associations API. 20 contact → company associations and 18 contact → deal associations. This is what makes the org a real relational data model rather than parallel flat objects.
+
 ### Deals (20)
 
 Created via `scripts/create_deals.py`. One Deal per account, distributed across all 7 default pipeline stages (Prospecting → Closed Won/Lost). ACV ranges from $5K (unqualified) to $780K (Strategic), with 2 closed deals for pipeline history.
@@ -96,6 +100,7 @@ doom-inc-hubspot/
 │   ├── seed_contacts.py        # 20 mock contacts
 │   ├── create_companies.py     # 20 company records
 │   ├── create_deals.py         # 20 deals across pipeline stages
+│   ├── create_associations.py  # wires contacts → companies + deals
 │   └── create_workflows.py     # workflow API (blocked on free tier)
 ├── workflows/
 │   ├── sla_tier1_breach.json           # SLA breach alert spec
@@ -126,6 +131,7 @@ python scripts/create_properties.py
 python scripts/seed_contacts.py
 python scripts/create_companies.py
 python scripts/create_deals.py
+python scripts/create_associations.py  # wire contacts → companies + deals
 ```
 
 Private App requires these scopes:
